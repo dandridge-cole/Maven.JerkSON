@@ -27,8 +27,12 @@ public class GroceryReporter {
       //      Pattern nameP = Pattern.compile(item.getName(), CASE_INSENSITIVE);
             String thisName = items.get(i).getName();
             if(this.map.containsKey(thisName)){
-                List<Double> temp = map.get(thisName);
-                temp.add(items.get(i).getPrice());
+                List<Double> tempList= new ArrayList<>();
+                tempList.addAll(map.get(thisName));
+             //   Collections.copy(tempList,map.get(thisName));
+                Double temp=items.get(i).getPrice();
+                tempList.add(temp);
+                this.map.replace(thisName,tempList);
             }
             else map.put(thisName,Arrays.asList(items.get(i).getPrice()));
         }
@@ -43,7 +47,7 @@ public class GroceryReporter {
         List<String> keys = new ArrayList<>(this.map.keySet());
         for(int i=0; i<this.map.size();i++){
             sb.append("name:").append(String.format("%8s \t\t seen: %d times",keys.get(i),this.map.get(keys.get(i)).size()))
-            .append("\n============= \t \t =============");
+            .append("\n============= \t \t =============\n");
         }
         return sb.toString();
     }
