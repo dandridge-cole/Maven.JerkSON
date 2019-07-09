@@ -27,7 +27,7 @@ public class ItemParser {
                 itemList.add(item);
             } catch (ItemParseException ipe){
                 this.exceptions++;
-                System.out.println("Exception # "+this.exceptions);
+                System.out.println("Exception # "+this.exceptions+": "+s);
             }
         }
         return itemList;
