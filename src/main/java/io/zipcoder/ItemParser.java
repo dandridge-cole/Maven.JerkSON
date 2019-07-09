@@ -12,6 +12,10 @@ import java.util.regex.Pattern;
 import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 public class ItemParser {
+    public Integer getExceptions() {
+        return exceptions;
+    }
+
     private Integer exceptions=0;
 
     public List<Item> parseItemList(String valueToParse) {
@@ -46,7 +50,7 @@ public class ItemParser {
         for(String s:fields){
             String[] field = p.split(s);
             if(field.length!=2) throw new ItemParseException();
-            if(nameP.matcher(field[0]).matches()) name=field[1].toLowerCase();
+            if(nameP.matcher(field[0]).matches()) name=Character.toUpperCase(field[1].charAt(0))+field[1].substring(1).toLowerCase();
             else if (typeP.matcher(field[0]).matches()) type=field[1].toLowerCase();
             else if (expP.matcher(field[0]).matches()) expiration=field[1];
             else if (priceP.matcher(field[0]).matches()) {
