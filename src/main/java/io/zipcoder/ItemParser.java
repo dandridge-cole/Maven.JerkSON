@@ -6,13 +6,12 @@ import io.zipcoder.utils.ItemParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.CASE_INSENSITIVE;
 
 public class ItemParser {
-    public Integer getExceptions() {
+    Integer getExceptions() {
         return exceptions;
     }
 
@@ -67,7 +66,6 @@ public class ItemParser {
 
     private List<String> divideList(String list) {
         Pattern p = Pattern.compile("##");
-
         return Arrays.asList(p.split(list));
     }
 }
