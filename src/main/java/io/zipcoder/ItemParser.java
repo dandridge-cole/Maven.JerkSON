@@ -20,7 +20,6 @@ public class ItemParser {
     public List<Item> parseItemList(String valueToParse) {
         List<String> itemStrings = divideList(valueToParse);
         List<Item> itemList = new ArrayList<>();
-
         for(String s: itemStrings){
             try{
                 Item item = parseSingleItem(s);
